@@ -1,0 +1,33 @@
+release_mode = false
+mod = "pro"
+# 上传的文件目录
+static_file = "static"
+
+[server]
+port ="9001"
+name = "fixtures-smart-watch"
+version = "0.0.1"
+
+[database]
+host = ""
+port = ""
+database = ""
+user_name = ""
+user_password = ""
+
+[grpc.client]
+host = "127.0.0.1"
+port = "8027"
+
+[grpc.server]
+host = "127.0.0.1"
+port = "8028"
+
+[redis]
+model = "CLUSTER" #CLUSTER
+alone_address = "hoocustody-prod.drtye2.clustercfg.apne1.cache.amazonaws.com:6379" # 单机地址
+alone_pwd = ""
+cluster_address = ["hoocustody-prod.drtye2.clustercfg.apne1.cache.amazonaws.com:6379"] # 集群地址
+cluster_pwd = ""
+
+
