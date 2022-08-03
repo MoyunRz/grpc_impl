@@ -1,9 +1,9 @@
 package grpcs
 
 import (
+	"github.com/MoyunRz/grpc_impl/grpcs/gutils"
 	"github.com/goinggo/mapstructure"
 	log "github.com/sirupsen/logrus"
-	"grpc_impl/grpcs/gutils"
 )
 
 type DealService struct {

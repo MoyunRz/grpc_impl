@@ -2,7 +2,7 @@ package example
 
 import (
 	"fmt"
-	"grpc_impl/grpcs"
+	"github.com/MoyunRz/grpc_impl/grpcs"
 	"reflect"
 	"testing"
 )
