@@ -1,6 +1,7 @@
 package grpcs
 
 import (
+	"encoding/json"
 	"github.com/MoyunRz/grpc_impl/grpcs/gutils"
 	"github.com/goinggo/mapstructure"
 	log "github.com/sirupsen/logrus"
@@ -54,6 +55,16 @@ func (receiver DealService) Bind(v interface{}) error {
 			log.Error(err.Error())
 			return err
 		}
+	}
+	return nil
+}
+
+func (receiver DealService) JsonBind(v interface{}) error {
+	b, err := json.Marshal(receiver.Data)
+	err = json.Unmarshal(b, v)
+	if err != nil {
+		log.Error(err.Error())
+		return err
 	}
 	return nil
 }
