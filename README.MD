@@ -1,5 +1,10 @@
 # grpc_impl
 
+## 介绍
+
+该项目是为了golang项目中为了能更好的进行grpc的使用，去掉繁琐proto重零开始搭建的繁琐事情，
+直接专注于service服务的开发而写的一个grpc模块工具
+
 ## 源码测试
 
  请看 `example`目录下的 `grpcs_test.go`
