@@ -1,5 +1,10 @@
 # grpc_impl
 
+## 源码测试
+
+ 请看 `example`目录下的 `grpcs_test.go`
+
+
 ## 使用教程-Demo
 
 ```go
