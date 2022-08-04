@@ -35,14 +35,14 @@ func CallMethodByName(param *ParamRequest) interface{} {
 		// 根据名称反射获取结构体内的方法
 		call := mtV.MethodByName(param.Method)
 		// 判断方法是否存在
-		if call.IsNil() || call.Kind() != reflect.Func {
+		if call.Kind() != reflect.Func {
 			continue
 		}
 		// 传入一个参数
 		params := make([]reflect.Value, 0)
 		var rp Response
 		json.Unmarshal(param.Params["key_data"], &rp)
-		ds := DealService{}
+		ds := &DealService{}
 		ds.Data = rp.Body
 		params = append(params, reflect.ValueOf(ds))
 		// 调用该方法
