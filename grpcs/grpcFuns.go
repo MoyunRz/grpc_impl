@@ -44,7 +44,7 @@ func CallMethodByName(param *ParamRequest) interface{} {
 		json.Unmarshal(param.Params["key_data"], &rp)
 		ds := DealService{}
 		ds.Data = rp.Body
-		params[0] = reflect.ValueOf(ds)
+		params = append(params, reflect.ValueOf(ds))
 		// 调用该方法
 		call.Call(params)
 		// 返回方法的处理结果
