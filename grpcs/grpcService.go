@@ -17,7 +17,7 @@ type KeyData struct {
 	Age  int    `json:"age"`
 }
 
-func (receiver DealService) Result(value interface{}) {
+func (receiver *DealService) Result(value interface{}) {
 	reply := &ParamReply{
 		Code: 1,
 		Msg:  "success",
@@ -38,7 +38,7 @@ func (receiver DealService) Result(value interface{}) {
 	receiver.Reply = reply
 }
 
-func (receiver DealService) ErrResult(msg string) {
+func (receiver *DealService) ErrResult(msg string) {
 	send := map[string][]byte{}
 	send["data"] = nil
 	receiver.Reply = &ParamReply{
@@ -48,7 +48,7 @@ func (receiver DealService) ErrResult(msg string) {
 	}
 }
 
-func (receiver DealService) Bind(v interface{}) error {
+func (receiver *DealService) Bind(v interface{}) error {
 	if receiver.Data != nil {
 		data := receiver.Data.(map[string]interface{})
 		if err := mapstructure.Decode(data, v); err != nil {
@@ -67,11 +67,4 @@ func (receiver DealService) JsonBind(v interface{}) error {
 		return err
 	}
 	return nil
-}
-
-func (receiver DealService) SendMessage() {
-
-	kds := KeyData{}
-	receiver.Bind(&kds)
-	receiver.Result("已经收到消息")
 }

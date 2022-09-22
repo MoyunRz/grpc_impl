@@ -3,6 +3,7 @@ package example
 import (
 	"fmt"
 	"github.com/MoyunRz/grpc_impl/grpcs"
+	"github.com/shopspring/decimal"
 	"reflect"
 	"testing"
 )
@@ -10,6 +11,17 @@ import (
 type KeyData struct {
 	Name string `json:"name"`
 	Age  int    `json:"age"`
+}
+
+type HeartAndBloodOxygenInfo struct {
+	UserId         int64           `json:"user_id"`
+	DeviceId       string          `json:"device_id"`
+	HeartFrequency decimal.Decimal `json:"heart_frequency"`
+	Hblood         decimal.Decimal `json:"hblood"`
+	Lblood         decimal.Decimal `json:"lblood"`
+	SpO2           decimal.Decimal `json:"spO2"`
+	Remark         string          `json:"remark"`
+	StartTime      string          `json:"start_time"`
 }
 
 func TestRpc1(t *testing.T) {
@@ -29,7 +41,7 @@ func TestRpc1(t *testing.T) {
 }
 
 func TestServer(t *testing.T) {
-	var rservice = grpcs.DealService{}
+	var rservice = PubService{}
 	grpcs.ConnServiceConfig("127.0.0.1", "8087").RegisterService(&rservice).StartServer()
 }
 
