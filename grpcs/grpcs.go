@@ -119,12 +119,19 @@ func (g *GrpcConfig) NewGrpcClient(method string, v interface{}, reply interface
 		log.Errorf("grpc post客户端出错: could not greet: %v", err)
 		return
 	}
-	// 反序列化
-	data := r.RpcReply["data"]
-	err = gutils.Deserialize(data, reply)
-	if err != nil {
-		log.Errorf("grpc 客户端反序列化出错: %v ", err)
+	if r.Code == -1 {
+		log.Errorf("服务端错误提示: %s ", r.Msg)
 		return
 	}
-
+	// 反序列化
+	data := r.RpcReply["data"]
+	log.Errorf("客户端返回数据: %v ", string(data))
+	if data != nil {
+		err = gutils.Deserialize(data, reply)
+		if err != nil {
+			log.Errorf("grpc 客户端反序列化出错: %v ", err)
+			return
+		}
+	}
+	return
 }
